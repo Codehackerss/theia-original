@@ -21,6 +21,8 @@ RUN apk add --no-cache \
 # Install distutils
 RUN apk add --no-cache py3-setuptools
 
+RUN apk add --no-cache java-cacerts openjdk17-jdk
+
 # Clone the Theia repository
 RUN git clone https://github.com/Codehackerss/theia-original.git .
 
