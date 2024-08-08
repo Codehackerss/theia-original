@@ -31,7 +31,7 @@ WORKDIR /workspace/theia
 RUN yarn
 
 # Install React and React DOM
-RUN yarn add react react-dom
+RUN yarn add -W react react-dom
 
 # Download plugins
 RUN yarn download:plugins
