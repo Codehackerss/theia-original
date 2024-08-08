@@ -4,7 +4,6 @@ FROM node:18.20.4-alpine
 # Set the working directory
 WORKDIR /workspace
 
-
 # Install necessary build tools and dependencies
 RUN apk add --no-cache \
     git \
@@ -15,13 +14,12 @@ RUN apk add --no-cache \
     pkgconfig \
     libx11-dev \
     libxkbfile-dev \
-    libsecret-dev
-
+    libsecret-dev \
+    openjdk17-jdk \
+    go
 
 # Install distutils
 RUN apk add --no-cache py3-setuptools
-
-RUN apk add --no-cache java-cacerts openjdk17-jdk
 
 # Clone the Theia repository
 RUN git clone https://github.com/Codehackerss/theia-original.git .
@@ -31,6 +29,9 @@ WORKDIR /workspace/theia
 
 # Install project dependencies
 RUN yarn
+
+# Install React and React DOM
+RUN yarn add react react-dom
 
 # Download plugins
 RUN yarn download:plugins
